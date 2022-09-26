@@ -1,0 +1,17 @@
+<app-shopping-edit></app-shopping-edit>
+<div class="row">
+    <div class="col-sm-12">
+        <hr>
+        <ul *ngIf="ingredients.length>0" type="none" class="list-group">
+            <li>
+                <a class="list-group-item lnk" *ngFor="let ingredient of ingredients;let i=index" (click)="onEditItem(i)">
+              {{ ingredient.name }}({{ ingredient.amount }})
+            </a>
+            </li>
+
+        </ul>
+        <div class="col-sm-12">
+            <h4 class="typewriter" *ngIf="ingredients.length==0">Kindly select an Ingredient!</h4>
+        </div>
+    </div>
+</div>

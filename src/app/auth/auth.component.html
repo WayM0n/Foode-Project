@@ -1,0 +1,32 @@
+<ng-template appPlaceholder></ng-template>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <!--col-md-6 offset-3 -->
+        <div class="spinnerAlign" *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+            <div class="form-group">
+                <label for="email" class="form-label">E-Mail</label>
+                <input type="email" title="Email" name="email" id="email" class="form-control" ngModel required>
+            </div>
+            <div class="form-gorup">
+                <label for="password">Password</label>
+                <input type="password" title="Password" class="form-control" name="password" id="password" ngModel pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 6 or more characters"
+                    minlength="6" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-md spaceBw  btn-primary" [ngStyle]="{'background-color':isLoginMode ? 'green' : '' }" [disabled]="!authForm.valid">
+                {{ isLoginMode ? 'Login' :'Sign Up' }}
+              </button> |
+
+                <button type="button" class="btn btn-md spaceBw btn-primary" [ngStyle]="{'background-color':!isLoginMode ? 'green' : '' }" (click)="onSwitchMode()">
+                Switch to {{ !isLoginMode ? 'Login' :'Sign Up' }}
+              </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>

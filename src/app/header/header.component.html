@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-primary">
+    <a class="navbar-brand hdr ptr">fOOd<b class="etext">E</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul id="navigation" class="navbar-nav mr-auto">
+            <li routerLinkActive="active bg-active" class="nav-item" *ngIf="isAuthenticated">
+                <a routerLinkActive="bg-active" class="text-light nav-link" routerLink="/recipes">Recipes</a>
+            </li>
+            <li routerLinkActive="active bg-active" class="nav-item">
+                <a routerLinkActive="bg-active" class="text-light nav-link" *ngIf="isAuthenticated" routerLink="/shopping-list">Shopping List</a>
+            </li>
+            <li routerLinkActive="active bg-active" class="nav-item" *ngIf="!isAuthenticated">
+                <a routerLinkActive="bg-active" class="text-light nav-link" routerLink="/auth">Authenticate</a>
+            </li>
+        </ul>
+        <div class="nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a class="btn btn-md btn-danger my-2 my-sm-0 ptr text-light nav-link" (click)="onLogout()">Logout</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="isAuthenticated">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Manage<span class="caret"></span>
+                     </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="ptr dropdown-item" (click)="onSaveData()">Save Data</a>
+                        <a class="ptr dropdown-item" (click)="onFetchData()">Fetch Data</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
